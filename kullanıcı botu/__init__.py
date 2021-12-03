@@ -1,4 +1,4 @@
-# MiaUserBot - Mehmet
+# WenomUserBot - Mehmet
 """ UserBot hazırlanışı. """
 
 import os, sys, time, heroku3
