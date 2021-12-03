@@ -115,7 +115,7 @@ AI_LANG = os.environ.get("AI_LANG", 'en')
 # Güncelleyici için özel (fork) repo linki.
 STABILITY = sb(os.environ.get("STABILITY", "True"))
 
-UPSTREAM_REPO_URL = "https://github.com/MiaUserBot/Mia.git" if not STABILITY else "https://github.com/wiperowner/Mia.git"
+UPSTREAM_REPO_URL = "https://WenomUserBot/Wenom.git" if not STABILITY else "https://WenomUserBot/Wenom.git"
 
 # Afk mesajların iletilmesi
 AFKILETME = sb(os.environ.get("AFKILETME", "True"))
@@ -206,8 +206,8 @@ else:
 CLEAN_WELCOME = sb(os.environ.get("CLEAN_WELCOME", "True"))
 
 # Last.fm Modülü
-BIO_PREFIX = os.environ.get("BIO_PREFIX", "@MiaUserBot | ")
-DEFAULT_BIO = os.environ.get("DEFAULT_BIO", "✨ @MiaUserBot")
+BIO_PREFIX = os.environ.get("BIO_PREFIX", "@WenomUserBot | ")
+DEFAULT_BIO = os.environ.get("DEFAULT_BIO", "✨ @WenomUserBot")
 
 LASTFM_API = os.environ.get("LASTFM_API", None)
 LASTFM_SECRET = os.environ.get("LASTFM_SECRET", None)
@@ -251,13 +251,13 @@ PM_AUTO_BAN_LIMIT = int(os.environ.get("PM_AUTO_BAN_LIMIT", 4))
 SPOTIFY_DC = os.environ.get("SPOTIFY_DC", None)
 SPOTIFY_KEY = os.environ.get("SPOTIFY_KEY", None)
 
-PAKET_ISMI = os.environ.get("PAKET_ISMI", "| 🌃 @MiaUserBot Paketi |")
+PAKET_ISMI = os.environ.get("PAKET_ISMI", "| 🌃 @WenomUserBot Paketi |")
 
 # Userbotu kapatmak için gruplar
 BLACKLIST_CHAT = os.environ.get("BLACKLIST_CHAT", None)
 
-if not BLACKLIST_CHAT: #Eğer ayarlanmamışsa Siri Support grubu eklenir.
-    BLACKLIST_CHAT = [-1001457702125,-1001168760410]
+if not BLACKLIST_CHAT: #Eğer ayarlanmamışsa Wenom Support grubu eklenir.
+    BLACKLIST_CHAT = [-1001592895231]
 
 # Otomatik Katılma ve güncellemeler
 OTOMATIK_KATILMA = sb(os.environ.get("OTOMATIK_KATILMA", "True"))
@@ -394,23 +394,23 @@ with bot:
 
 
     try:
-        bot(JoinChannelRequest("@MiaUserBot"))
+        bot(JoinChannelRequest("@WenomUserBot"))
         if OTOMATIK_KATILMA:
-            bot(JoinChannelRequest("@MiaSupport"))
+            bot(JoinChannelRequest("@WenomSupport"))
     except:
         pass
 
     erdemgtten = False    ### L
 
     try:
-        bot(LeaveChannelRequest("@SiriUserbot"))
+        bot(LeaveChannelRequest("@WenomUserBot"))
     except:
         pass
 
     erdemgtten = True   ### O
 
     try:
-        bot(LeaveChannelRequest("@HydraDev"))
+        bot(LeaveChannelRequest("@WenomSupport"))
     except:
         pass
 
@@ -418,7 +418,7 @@ with bot:
 
 
     try:
-        bot(LeaveChannelRequest("@SiriPlugin"))
+        bot(LeaveChannelRequest("@WenomSupport"))
     except:
         pass
 
@@ -426,12 +426,12 @@ with bot:
 
     if erdemgtten:
         try:
-            bot(LeaveChannelRequest("@SiriSohbet"))
+            bot(LeaveChannelRequest("@WenomSupport"))
         except:
             pass
         erdemgtten = False
         try:
-            bot(LeaveChannelRequest("@Hydradestek"))
+            bot(LeaveChannelRequest("@WenomSupport"))
         except:
             pass
 
@@ -445,21 +445,21 @@ with bot:
         @tgbot.on(NewMessage(pattern='/start'))
         async def start_bot_handler(event):
             if not event.message.from_id == uid:
-                await event.reply(f'`Merhaba ben` @MiaUserBot`! Ben sahibime (`@{me.username}`) yardımcı olmak için varım, yaani sana yardımcı olamam :/ Ama sen de bir Mia açabilirsin; Kanala bak` @SiriOT')
+                await event.reply(f'`Merhaba ben` @WenomUserBot`! Ben sahibime (`@{me.username}`) yardımcı olmak için varım, yaani sana yardımcı olamam :/ Ama sen de bir Wenom açabilirsin; Kanala bak` @WenomSupport')
             else:
-                await event.reply(f'`Tengri save Turks! Siri working... `')
+                await event.reply(f'`Tengri save Turks! Wenom working... `')
 
         @tgbot.on(InlineQuery)  # pylint:disable=E0602
         async def inline_handler(event):
             builder = event.builder
             result = None
             query = event.text
-            if event.query.user_id == uid and query == "@MiaUserBot":
+            if event.query.user_id == uid and query == "@WenomUserBot":
                 rev_text = query[::-1]
                 veriler = (butonlastir(0, sorted(CMD_HELP)))
                 result = await builder.article(
                     f"Lütfen Sadece .yardım Komutu İle Kullanın",
-                    text=f"**En Gelişmiş UserBot!** [Mia](https://t.me/MiaUserBot) __Çalışıyor...__\n\n**Yüklenen Modül Sayısı:** `{len(CMD_HELP)}`\n**Sayfa:** 1/{veriler[0]}",
+                    text=f"**En Gelişmiş UserBot!** [Wenom](https://t.me/WenomUserBot) __Çalışıyor...__\n\n**Yüklenen Modül Sayısı:** `{len(CMD_HELP)}`\n**Sayfa:** 1/{veriler[0]}",
                     buttons=veriler[1],
                     link_preview=False
                 )
@@ -475,14 +475,14 @@ with bot:
                 )
             else:
                 result = builder.article(
-                    "@MiaUserBot",
-                    text="""@MiaUserBot'u kullanmayı deneyin!
+                    "@WenomUserBott",
+                    text="""@WenomUserBot'u kullanmayı deneyin!
 Hesabınızı bot'a çevirebilirsiniz ve bunları kullanabilirsiniz. Unutmayın, siz başkasının botunu yönetemezsiniz! Alttaki GitHub adresinden tüm kurulum detayları anlatılmıştır.""",
                     buttons=[
-                        [custom.Button.url("Kanala Katıl", "https://t.me/MiaUserBot"), custom.Button.url(
-                            "Gruba Katıl", "https://t.me/MiaSupport")],
+                        [custom.Button.url("Kanala Katıl", "https://t.me/WenomUserBot"), custom.Button.url(
+                            "Gruba Katıl", "https://t.me/WenomSupport")],
                         [custom.Button.url(
-                            "GitHub", "https://github.com/MiaUserBot/mia")]
+                            "GitHub", "https://github.com/WenomUserBot/Wenom.git")]
                     ],
                     link_preview=False
                 )
@@ -491,11 +491,11 @@ Hesabınızı bot'a çevirebilirsiniz ve bunları kullanabilirsiniz. Unutmayın,
         @tgbot.on(callbackquery.CallbackQuery(data=compile(b"sayfa\((.+?)\)")))
         async def sayfa(event):
             if not event.query.user_id == uid: 
-                return await event.answer("❌ Hey! Benim mesajlarımı düzenlemeye kalkma! Kendine bir @MiaUserBot kur.", cache_time=0, alert=True)
+                return await event.answer("❌ Hey! Benim mesajlarımı düzenlemeye kalkma! Kendine bir @WenomUserBot kur.", cache_time=0, alert=True)
             sayfa = int(event.data_match.group(1).decode("UTF-8"))
             veriler = butonlastir(sayfa, CMD_HELP)
             await event.edit(
-                f"** En Gelişmiş UserBot!** [Mia](https://t.me/MiaUserBot) __Çalışıyor...__\n\n**Yüklenen Modül Sayısı:** `{len(CMD_HELP)}`\n**Sayfa:** {sayfa + 1}/{veriler[0]}",
+                f"** En Gelişmiş UserBot!** [Wenom](https://t.me/WenomUserBot) __Çalışıyor...__\n\n**Yüklenen Modül Sayısı:** `{len(CMD_HELP)}`\n**Sayfa:** {sayfa + 1}/{veriler[0]}",
                 buttons=veriler[1],
                 link_preview=False
             )
@@ -503,7 +503,7 @@ Hesabınızı bot'a çevirebilirsiniz ve bunları kullanabilirsiniz. Unutmayın,
         @tgbot.on(callbackquery.CallbackQuery(data=compile(b"bilgi\[(\d*)\]\((.*)\)")))
         async def bilgi(event):
             if not event.query.user_id == uid: 
-                return await event.answer("❌  Hey! Benim mesajlarımı düzenlemeye kalkma! Kendine bir @MiaUserBot kur.", cache_time=0, alert=True)
+                return await event.answer("❌  Hey! Benim mesajlarımı düzenlemeye kalkma! Kendine bir @WenomUserBot kur.", cache_time=0, alert=True)
 
             sayfa = int(event.data_match.group(1).decode("UTF-8"))
             komut = event.data_match.group(2).decode("UTF-8")
@@ -523,7 +523,7 @@ Hesabınızı bot'a çevirebilirsiniz ve bunları kullanabilirsiniz. Unutmayın,
         @tgbot.on(callbackquery.CallbackQuery(data=compile(b"komut\[(.*)\[(\d*)\]\]\((.*)\)")))
         async def komut(event):
             if not event.query.user_id == uid: 
-                return await event.answer("❌ Hey! Benim mesajlarımı düzenlemeye kalkma! Kendine bir @MiaUserBot kur.", cache_time=0, alert=True)
+                return await event.answer("❌ Hey! Benim mesajlarımı düzenlemeye kalkma! Kendine bir @WenomUserBot kur.", cache_time=0, alert=True)
 
             cmd = event.data_match.group(1).decode("UTF-8")
             sayfa = int(event.data_match.group(2).decode("UTF-8"))
@@ -564,7 +564,7 @@ Hesabınızı bot'a çevirebilirsiniz ve bunları kullanabilirsiniz. Unutmayın,
         LOGS.info(
             "Botunuzda inline desteği devre dışı bırakıldı. "
             "Etkinleştirmek için bir bot token tanımlayın ve botunuzda inline modunu etkinleştirin. "
-            "Eğer bunun dışında bir sorun olduğunu düşünüyorsanız bize ulaşın t.me/SiriSupport."
+            "Eğer bunun dışında bir sorun olduğunu düşünüyorsanız bize ulaşın t.me/WenomSupport."
         )
 
     try:
